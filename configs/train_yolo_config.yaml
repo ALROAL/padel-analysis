@@ -1,0 +1,23 @@
+data:
+  path: /home/ubuntu/padel-analysis/data/datasets/object_detection/players/data.yaml
+
+model:
+  path: /home/ubuntu/padel-analysis/models/yolo/base/yolov8n.pt
+  save_dir: /home/ubuntu/padel-analysis/runs
+
+hyperparameters:
+  epochs: 20
+
+evaluation:
+  metrics: ["binary_accuracy", "binary_precision", "binary_recall"]
+
+save_dir: /home/ubuntu/padel-analysis/runs
+seed: 42
+device: cpu
+
+hydra:
+  mode: RUN
+  sweeper:
+    params:
+      ++model.prune_schema: "{num_heads_prune_ratio:0.8, head_dim_prune_ratio:0.8},
+                             {num_heads_prune_ratio:0.8, head_dim_prune_ratio:0.5}"
