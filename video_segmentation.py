@@ -22,8 +22,6 @@ def main(cfg):
                     "parent_video_path": original_video_path
                 }
             )
-
-    print("a")
     
 if __name__ == "__main__":
     main()
